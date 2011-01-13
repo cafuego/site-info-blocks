@@ -1,0 +1,48 @@
+<?php
+/**
+ * Implementation of hook_block().
+ */
+function site_info_blocks_block($op = 'list', $delta = 0, $edit = array()) {
+  if ($op == 'list') {
+    $blocks = array();
+    $blocks['slogan'] = array(
+      'info' => t('Site Slogan'),
+      'cache' => BLOCK_CACHE_GLOBAL,
+    );
+    $blocks['mission'] = array(
+      'info' => t('Site Mission'),
+      'cache' => BLOCK_CACHE_GLOBAL,
+    );
+    $blocks['footer-message'] = array(
+      'info' => t('Site Footer Message'),
+      'cache' => BLOCK_CACHE_GLOBAL,
+    );
+    return $blocks;
+  }
+
+  if ($op == 'view') {
+    if ($delta == 'slogan')
+      $block = array(
+        'subject' => t('Slogan'),
+        'content' => variable_get('site_slogan', ''),
+      );
+    if ($delta == 'mission')
+      $block = array(
+        'subject' => t('Mission'),
+        'content' => variable_get('site_mission', ''),
+      );
+    if ($delta == 'footer-message')
+      $block = array(
+        'subject' => t('Footer Message'),
+        'content' => variable_get('site_footer', ''),
+      );
+    return $block;
+  }
+}
+
+/**
+ * Implementation of hook_init()
+ */
+function site_info_blocks_init() {
+  drupal_add_css(drupal_get_path('module','site_info_blocks') . '/site_info_blocks.css');
+}

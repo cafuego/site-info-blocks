@@ -1,0 +1,18 @@
+/* CSS for the site info blocks */
+
+/* Site Slogan */
+div#block-site-info-blocks-slogan {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+/* Site Mission */
+div#block-site-info-blocks-mission {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+/* Site Footer Message */
+div#block-site-info-blocks-footer-message {
+  font-size: 0.8em;
+}
